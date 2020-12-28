@@ -1,6 +1,6 @@
 # CancancanCallbacks
 
-Adds callbacks to cancan ability calls
+Adds notifications to cancan ability calls
 
 ## Installation
 
@@ -20,22 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-Include CanCan::Callbacks in your CanCan::Ability
+Include CanCan::PubSub in your CanCan::Ability
 ```
 class My::Ability
     include CanCan::Ability
-    include CanCan::Callbacks
-
-    def after_can_method
-
-    end
+    include CanCan::PubSub
 end
 ```
 
-Subscribe to callbacks
-`My::Ability.set_callback :can, :after, :after_can_method`
+Subscribe to publications. Publications are based on ActiveSupport Notifications. See ActiveSupport for further details
+```
+ability = My::Ability.new
+ability.subscribe("before_authorize!") do
 
-Available callbacks: can, cannot, can?, cannot?, authorize!
+end
+```
+
+Available subscriptions: can, cannot, can?, cannot?, authorize!
 
 ## Development
 

@@ -3,4 +3,4 @@
 require "active_support"
 require "active_support/core_ext/string/inflections"
 require "cancan"
-require "cancan/callbacks"
+require "cancan/pub_sub"

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-module CancanCallbacks
-  VERSION = "0.1.0"
+module Cancan
+  module PubSub
+    VERSION = "0.1.0"
+  end
 end
