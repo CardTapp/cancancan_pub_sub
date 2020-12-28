@@ -4,15 +4,34 @@ module CanCan
   module PubSub
     extend ActiveSupport::Concern
 
-    def subscribe(event, &block)
-      ActiveSupport::Notifications.subscribe(event.to_sym, &block)
+    def subscribe(event, target = nil, &block)
+      events[event] ||= []
+      if target
+        events[event] << target
+      elsif block
+        events[event] << block
+      else
+        raise ArgumentError
+      end
       self
     end
 
     private
 
+    def events
+      @events ||= {}.with_indifferent_access
+    end
+
     def publish(event)
-      ActiveSupport::Notifications.publish(event, self)
+      return if events[event].nil?
+
+      events[event].each do |handler|
+        if handler.is_a? Symbol
+          send(handler, event)
+        else
+          handler.call(event, self)
+        end
+      end
     end
 
     included do

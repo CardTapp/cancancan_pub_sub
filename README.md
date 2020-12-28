@@ -28,7 +28,7 @@ class My::Ability
 end
 ```
 
-Subscribe to publications. Publications are based on ActiveSupport Notifications. See ActiveSupport for further details
+Subscribe to publications.
 ```
 ability = My::Ability.new
 ability.subscribe("before_authorize!") do
