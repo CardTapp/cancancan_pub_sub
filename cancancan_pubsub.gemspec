@@ -5,12 +5,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require_relative "lib/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "cancancan_callbacks"
-  spec.version       = CancanCallbacks::VERSION
+  spec.name          = "cancancan_pub_sub"
+  spec.version       = Cancan::PubSub::VERSION
   spec.authors       = ["Jason Risch"]
   spec.email         = ["jason@cardtapp.com"]
 
-  spec.summary       = "Add callbacks to cancancan authorization gem"
+  spec.summary       = "Add notifications to cancancan authorization gem"
   spec.homepage      = "https://www.cardtapp.com"
   spec.license       = "MIT"
 
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/CardTapp/cancancan_callbacks"
-    spec.metadata["changelog_uri"] = "https://github.com/CardTapp/cancancan_callbacks/CHANGELOG.md"
+    spec.metadata["source_code_uri"] = "https://github.com/CardTapp/cancancan_pub_sub"
+    spec.metadata["changelog_uri"] = "https://github.com/CardTapp/cancancan_pub_sub/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
