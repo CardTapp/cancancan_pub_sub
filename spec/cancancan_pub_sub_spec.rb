@@ -8,8 +8,8 @@ RSpec.describe CanCan::PubSub do
     include CanCan::PubSub
   end
 
-  RSpec.shared_examples("runs callbacks") do |type|
-    it "runs callbacks for #{type}" do
+  RSpec.shared_examples("runs notifications") do |type|
+    it "runs notifications for #{type}" do
       ability = self.class::Ability.new
       after = ->(evt, obj) {}
       before = ->(evt, obj) {}
@@ -23,12 +23,12 @@ RSpec.describe CanCan::PubSub do
     end
   end
 
-  it_behaves_like "runs callbacks", :can
-  it_behaves_like "runs callbacks", :cannot
-  it_behaves_like "runs callbacks", :can?
-  it_behaves_like "runs callbacks", :cannot?
+  it_behaves_like "runs notifications", :can
+  it_behaves_like "runs notifications", :cannot
+  it_behaves_like "runs notifications", :can?
+  it_behaves_like "runs notifications", :cannot?
 
-  it "runs callbacks for authorize! when authorized" do
+  it "runs notifications for authorize! when authorized" do
     ability = self.class::Ability.new
     after = ->(evt, obj) {}
     before = ->(evt, obj) {}
@@ -42,7 +42,7 @@ RSpec.describe CanCan::PubSub do
     ability.authorize! :something, :otherthing
   end
 
-  it "runs callbacks for authorize! when unauthorized" do
+  it "runs notifications for authorize! when unauthorized" do
     ability = self.class::Ability.new
     after = ->(evt, obj) {}
     before = ->(evt, obj) {}
