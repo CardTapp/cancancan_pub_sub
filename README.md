@@ -1,6 +1,6 @@
 # CancancanCallbacks
 
-Adds callbacks to cancan ability calls
+Adds notifications to cancan ability calls
 
 ## Installation
 
@@ -16,26 +16,27 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cancancan_callbacks
+    $ gem install cancancan_pub_sub
 
 ## Usage
 
-Include CanCan::Callbacks in your CanCan::Ability
+Include CanCan::PubSub in your CanCan::Ability
 ```
 class My::Ability
     include CanCan::Ability
-    include CanCan::Callbacks
-
-    def after_can_method
-
-    end
+    include CanCan::PubSub
 end
 ```
 
-Subscribe to callbacks
-`My::Ability.set_callback :can, :after, :after_can_method`
+Subscribe to publications. Publications are based on ActiveSupport Notifications. See ActiveSupport for further details
+```
+ability = My::Ability.new
+ability.subscribe("before_authorize!") do
 
-Available callbacks: can, cannot, can?, cannot?, authorize!
+end
+```
+
+Available subscriptions: can, cannot, can?, cannot?, authorize!
 
 ## Development
 
@@ -45,7 +46,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cancancan_callbacks. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cancancan_pub_sub. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -53,4 +54,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CancancanCallbacks project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cancancan_callbacks/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the CancancanCallbacks project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cancancan_pub_sub/blob/master/CODE_OF_CONDUCT.md).

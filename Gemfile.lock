@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cancancan_callbacks (0.1.0)
+    cancancan_pub_sub (0.1.0)
       activesupport
       cancancan
 
@@ -71,7 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cancancan_callbacks!
+  cancancan_pub_sub!
   database_cleaner
   rake (~> 10.0)
   rspec (~> 3.0)
