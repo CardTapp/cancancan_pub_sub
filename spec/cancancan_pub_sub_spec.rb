@@ -36,8 +36,8 @@ RSpec.describe CanCan::PubSub do
     ability.subscribe("before_authorize!", &before)
     ability.can :something, :otherthing
 
-    expect(before).to receive(:call).with(:"before_authorize!", ability).ordered
-    expect(after).to receive(:call).with(:"after_authorize!", ability).ordered
+    expect(before).to receive(:call).with(:before_authorize!, ability).ordered
+    expect(after).to receive(:call).with(:after_authorize!, ability).ordered
 
     ability.authorize! :something, :otherthing
   end
@@ -46,11 +46,11 @@ RSpec.describe CanCan::PubSub do
     ability = self.class::Ability.new
     after = ->(evt, obj) {}
     before = ->(evt, obj) {}
-    ability.subscribe("after_authorize!", &after)
-    ability.subscribe("before_authorize!", &before)
+    ability.subscribe(:after_authorize!, &after)
+    ability.subscribe(:before_authorize!, &before)
 
-    expect(before).to receive(:call).with(:"before_authorize!", ability).ordered
-    expect(after).not_to receive(:call).with(:"after_authorize!", ability).ordered
+    expect(before).to receive(:call).with(:before_authorize!, ability).ordered
+    expect(after).not_to receive(:call).with(:after_authorize!, ability).ordered
 
     expect { ability.authorize!(:something, :otherthing) }.to raise_error(CanCan::AccessDenied)
   end

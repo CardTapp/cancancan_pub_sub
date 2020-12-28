@@ -16,8 +16,6 @@ module CanCan
     end
 
     included do
-      include ActiveSupport::Callbacks
-
       methods = %i[can cannot can? cannot? authorize!]
       methods.each.each do |method|
         alias_method "#{method}_original", method
