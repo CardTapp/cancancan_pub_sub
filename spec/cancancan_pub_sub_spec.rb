@@ -33,8 +33,8 @@ RSpec.describe CanCan::PubSub do
       ability.subscribe("after_#{type}", :after)
       ability.subscribe("before_#{type}", :before)
 
-      expect(ability).to receive(:before).with(:"before_#{type}").ordered
-      expect(ability).to receive(:after).with(:"after_#{type}").ordered
+      expect(ability).to receive(:before).with(:"before_#{type}", ability).ordered
+      expect(ability).to receive(:after).with(:"after_#{type}", ability).ordered
 
       ability.send type, :something, :otherthing
     end
