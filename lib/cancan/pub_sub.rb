@@ -27,7 +27,7 @@ module CanCan
 
       events[event].each do |handler|
         if handler.is_a? Symbol
-          send(handler, event)
+          send(handler, event, self)
         else
           handler.call(event, self)
         end
