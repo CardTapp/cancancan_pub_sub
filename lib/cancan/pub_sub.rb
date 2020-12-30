@@ -38,9 +38,9 @@ module CanCan
       methods = %i[can cannot can? cannot? authorize!]
       methods.each.each do |method|
         alias_method "#{method}_original", method
-        define_method(method) do |*args|
+        define_method(method) do |*args, &block|
           publish("before_#{method}".to_sym)
-          result = send("#{method}_original", *args)
+          result = send("#{method}_original", *args, &block)
           publish("after_#{method}".to_sym)
           result
         end
