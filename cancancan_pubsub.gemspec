@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
     spec.metadata["changelog_uri"] = "https://github.com/CardTapp/cancancan_pub_sub/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+          "public gem pushes."
   end
 
   # Specify which files should be added to the gem when it is released.
@@ -40,7 +40,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "cancancan"
 
   spec.add_development_dependency "database_cleaner"
-  spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec_junit_formatter"
   spec.add_development_dependency "rubocop"
